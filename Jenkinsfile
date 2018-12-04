@@ -22,6 +22,7 @@ def echo_all(list) {
 }
 
 def getData() {
+    echo 'hi'
     File file = new File("./sampleList")
     return file.readLines()
 }
