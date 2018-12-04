@@ -1,11 +1,19 @@
+abcs = ['a', 'b', 'c']
+
+
 pipeline {
     agent any
     stages {
         stage('build') {
             steps {
-                sh 'python --version'
-                sh 'python test.py'
+               echo_all(abcs)
             }
         }
+    }
+}
+
+def echo_all(list) {
+    list.each { item ->
+        echo "Hello ${item}"
     }
 }
