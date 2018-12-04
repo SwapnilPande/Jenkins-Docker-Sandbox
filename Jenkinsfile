@@ -15,6 +15,6 @@ pipeline {
 def echo_all(list) {
     list.each { item ->
         echo "Hello ${item}"
-        cat test.py
+        sh 'cat test.py'
     }
 }
