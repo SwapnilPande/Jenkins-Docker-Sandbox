@@ -7,6 +7,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
+                sh 'dir'
                echo_all(abcs)
             }
         }
@@ -21,6 +22,6 @@ def echo_all(list) {
 }
 
 def getData() {
-    def file = new File('sampleList')
+    File file = new File("sampleList")
     return file.readLines()
 }
