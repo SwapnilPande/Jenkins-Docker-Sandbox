@@ -1,4 +1,5 @@
-abcs = ['a', 'b', 'c']
+import java.io.File
+abcs = getData()
 
 
 pipeline {
@@ -17,4 +18,9 @@ def echo_all(list) {
         echo "Hello ${item}"
         sh 'cat test.py'
     }
+}
+
+def getData() {
+    def file = new File('sampleList')
+    return file.readLines()
 }
