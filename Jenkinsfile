@@ -14,6 +14,7 @@ pipeline {
 
 def echo_all(list) {
     list.each { item ->
-        'sh echo "Hello ${item}"'
+        echo "Hello ${item}"
+        echo "Just testing more things"
     }
 }
