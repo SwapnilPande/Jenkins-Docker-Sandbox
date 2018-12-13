@@ -43,6 +43,6 @@ def echo_all(list) {
 def getData() {
     echo 'hi'
     sh 'dir'
-    File file = new File("sampleList")
-    return file.readLines()
+    return readFile encoding: 'UTF-8', file: filePath
+
 }
