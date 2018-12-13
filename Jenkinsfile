@@ -1,5 +1,5 @@
-import java.io.File
-abcs = getData()
+//import java.io.File
+//abcs = getData()
 
 
 pipeline {
