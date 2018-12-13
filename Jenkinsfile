@@ -43,6 +43,6 @@ def echo_all(list) {
 def getData() {
     echo 'hi'
     sh 'dir'
-    return readFile(sampleList)
+    return readFile('sampleList')
 
 }
