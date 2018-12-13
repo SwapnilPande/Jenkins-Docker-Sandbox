@@ -1,9 +1,11 @@
+import java.io.File
+
 // While you can't use Groovy's .collect or similar methods currently, you can
 // still transform a list into a set of actual build steps to be executed in
 // parallel.
 
 // Our initial list of strings we want to echo in parallel
-def stringsToEcho = ["a", "b", "c", "d"]
+def stringsToEcho = getData()
 
 // The map we'll store the parallel steps in before executing them.
 def stepsForParallel = stringsToEcho.collectEntries {
@@ -25,4 +27,18 @@ def transformIntoStep(inputString) {
             echo inputString
         }
     }
+}
+
+def echo_all(list) {
+    list.each { item ->
+        echo "Hello ${item}"
+        sh 'cat test.py'
+    }
+}
+
+def getData() {
+    echo 'hi'
+    sh 'dir'
+    File file = new File("./sampleList")
+    return file.readLines()
 }
