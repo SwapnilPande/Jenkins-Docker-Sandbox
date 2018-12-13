@@ -8,7 +8,28 @@ pipeline {
         stage('build') {
             steps {
                 
-               echo_all(abcs)
+               parallel {
+                   stage("Branch A") {
+                       agent any
+                       steps {
+                           echo "Hi, I'm branch A"
+                       }
+                   }
+
+                   stage("Branch B") {
+                       agent any
+                       steps {
+                           echo "Hi, I'm branch B"
+                       }
+                   }
+
+                   stage("Branch C") {
+                       agent any
+                       steps {
+                           echo "Hi, I'm branch C"
+                       }
+                   }
+               }
             }
         }
     }
