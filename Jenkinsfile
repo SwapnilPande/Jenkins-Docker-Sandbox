@@ -5,7 +5,11 @@ import java.io.File
 // parallel.
 
 // Our initial list of strings we want to echo in parallel
-def stringsToEcho = getData()
+def stringsToEcho
+node('master')
+{
+    stringsToEcho = getData()
+}
 
 // The map we'll store the parallel steps in before executing them.
 def stepsForParallel = stringsToEcho.collectEntries {
