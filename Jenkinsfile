@@ -6,30 +6,27 @@ pipeline {
     agent any
     stages {
         stage('build') {
-            steps {
-                
-               parallel {
-                   stage("Branch A") {
-                       agent any
-                       steps {
-                           echo "Hi, I'm branch A"
-                       }
-                   }
+            parallel {
+                stage("Branch A") {
+                    agent any
+                    steps {
+                        echo "Hi, I'm branch A"
+                    }
+                }
 
-                   stage("Branch B") {
-                       agent any
-                       steps {
-                           echo "Hi, I'm branch B"
-                       }
-                   }
+                stage("Branch B") {
+                    agent any
+                    steps {
+                        echo "Hi, I'm branch B"
+                    }
+                }
 
-                   stage("Branch C") {
-                       agent any
-                       steps {
-                           echo "Hi, I'm branch C"
-                       }
-                   }
-               }
+                stage("Branch C") {
+                    agent any
+                    steps {
+                        echo "Hi, I'm branch C"
+                    }
+                }
             }
         }
     }
