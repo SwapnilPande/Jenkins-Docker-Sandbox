@@ -45,6 +45,6 @@ def getData() {
     sh 'dir'
     data = readFile('sampleList')
     echo data
-    return 
+    return data.split('\n').collect{it as int}
 
 }
