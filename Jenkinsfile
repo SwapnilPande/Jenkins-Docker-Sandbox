@@ -1,5 +1,5 @@
 import java.io.File
-
+checkout scm
 // While you can't use Groovy's .collect or similar methods currently, you can
 // still transform a list into a set of actual build steps to be executed in
 // parallel.
@@ -15,6 +15,7 @@ node('master')
 def stepsForParallel = stringsToEcho.collectEntries {
     ["echoing ${it}" : transformIntoStep(it)]
 }
+
 
 // Actually run the steps in parallel - parallel takes a map as an argument,
 // hence the above.
