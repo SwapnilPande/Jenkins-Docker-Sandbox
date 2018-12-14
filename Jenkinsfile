@@ -1,5 +1,4 @@
 import java.io.File
-checkout scm
 // While you can't use Groovy's .collect or similar methods currently, you can
 // still transform a list into a set of actual build steps to be executed in
 // parallel.
@@ -8,6 +7,7 @@ checkout scm
 def stringsToEcho
 node('master')
 {
+    checkout scm
     stringsToEcho = getData()
 }
 
