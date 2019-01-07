@@ -11,6 +11,7 @@ node('master')
 }
 
 // The map we'll store the parallel steps in before executing them.
+// step name is key of map, step is the value
 def stepsForParallel = stringsToEcho.collectEntries {
     ["echoing ${it}" : transformIntoStep(it)]
 }
