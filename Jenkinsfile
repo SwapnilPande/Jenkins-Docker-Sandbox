@@ -40,7 +40,7 @@ def transformIntoStep(inputString) {
 
     return {
         node {
-            lock(${gpuToUse})
+            lock(gpuToUse)
             {
                 echo inputString
             }
