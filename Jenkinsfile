@@ -3,9 +3,7 @@
 // parallel.
 
 //List of GPUs available to execute code on
-def availableGPUS = ["GPU1", "GPU2"]
-def numAvailableGPUS = 2;
-def gpuNumber = 0;
+
 
 // Our initial list of strings we want to echo in parallel
 def stringsToEcho
@@ -30,6 +28,9 @@ parallel(stepsForParallel)
 def transformIntoStep(inputString) {
     // The step is wrapped in a groovy closure so that it executes when 'parallel' 
     // is called instead of when return statement is executing
+    def availableGPUS = ["GPU1", "GPU2"]
+    def numAvailableGPUS = 2;
+    def gpuNumber = 0;
     gpuToUse = availableGPUS[gpuNumber]
     gpuNumber++;
     if(gpuNumber >= numAvailableGPUS)
@@ -64,7 +65,6 @@ def getData(fileName) {
     sh 'dir'
     //Ingest data as string
     data = readFile(fileName)
-    echo data
     
     //Split data on newline and return list
     return data.split('\n')
