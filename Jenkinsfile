@@ -2,6 +2,11 @@
 // still transform a list into a set of actual build steps to be executed in
 // parallel.
 
+//List of GPUs available to execute code on
+def availableGPUS = ["GPU1", "GPU2"]
+def numAvailableGPUS = 2;
+def gpuNumber = 0;
+
 // Our initial list of strings we want to echo in parallel
 def stringsToEcho
 node('master')
@@ -25,9 +30,19 @@ parallel(stepsForParallel)
 def transformIntoStep(inputString) {
     // The step is wrapped in a groovy closure so that it executes when 'parallel' 
     // is called instead of when return statement is executing
+    gpuToUse = availableGPUS[gpuNumber]
+    gpuNumber++;
+    if(gpuNumber >= numAvailableGPUS)
+    {
+        gpuNumber = 0;
+    }
+
     return {
         node {
-            echo inputString
+            lock(${gpuToUse})
+            {
+                echo inputString
+            }
         }
     }
 }
